@@ -23,20 +23,38 @@ public class Sensors : MonoBehaviour
 
     private IEnumerator Start()
     {
-
+        proxyPos = proxySensor.transform.position;
         yield return new WaitForSeconds(1);
         InputSystem.EnableDevice(GravitySensor.current);
         InputSystem.EnableDevice(Gyroscope.current);
         InputSystem.EnableDevice(LinearAccelerationSensor.current);
         InputSystem.EnableDevice(ProximitySensor.current);
 
-        proxyPos = proxySensor.transform.position;
 
         FrontCamera();
-
     }
     private void Update()
     {
+        if(Input.touchCount > 0)
+        {
+            for (int i = 0; i < Input.touchCount; i++)
+            {
+                var touch = Input.GetTouch(i);
+                var worldPos = Camera.main.ScreenToWorldPoint(touch.position);
+                touchVisualizers[touch.fingerId].position = worldPos + Vector3.forward;
+            }
+        }
+        else
+        {
+            foreach (var item in touchVisualizers)
+            {
+                item.position = Vector3.one * 1000;
+            }
+        }
+
+
+        if (GravitySensor.current == null || ProximitySensor.current == null || LinearAccelerationSensor.current == null)
+            return;
         var gravity = GravitySensor.current.gravity.ReadValue();
         var up = new Vector3(-gravity.x, -gravity.y, 0);
 
@@ -58,22 +76,6 @@ public class Sensors : MonoBehaviour
             }
         }
 
-        if(Input.touchCount > 0)
-        {
-            for (int i = 0; i < Input.touchCount; i++)
-            {
-                var touch = Input.GetTouch(i);
-                var worldPos = Camera.main.ScreenToWorldPoint(touch.position);
-                touchVisualizers[touch.fingerId].position = worldPos + Vector3.forward;
-            }
-        }
-        else
-        {
-            foreach (var item in touchVisualizers)
-            {
-                item.position = Vector3.positiveInfinity;
-            }
-        }
         
 
         if (ProximitySensor.current.distance.ReadValue() > 0)
@@ -82,13 +84,16 @@ public class Sensors : MonoBehaviour
             obstructed = false;
 
         proxySensor.material.color = obstructed ? Color.white : Color.green;
-        proxySensor.transform.position = proxyPos + LinearAccelerationSensor.current.acceleration.ReadValue();
+        var proxyOffset = LinearAccelerationSensor.current.acceleration.ReadValue();
+        proxyOffset.z = 0;
+        proxySensor.transform.position = proxyPos + proxyOffset;
 
 
     }
 
     void FrontCamera()
     {
+        return;
         Application.RequestUserAuthorization(UserAuthorization.WebCam);
         string frontCamName = null;
         var webCamDevices = WebCamTexture.devices;
@@ -108,8 +113,8 @@ public class Sensors : MonoBehaviour
     }
     private void OnGUI()
     {
-        GUI.Label(new Rect(100, 100, 300, 100), GravitySensor.current.enabled + "");
-        GUI.Label(new Rect(100, 125, 300, 100), GravitySensor.current.gravity.ReadValue() + "");
+        GUI.Label(new Rect(100, 100, 300, 100), GravitySensor.current?.enabled + "");
+        GUI.Label(new Rect(100, 125, 300, 100), GravitySensor.current?.gravity.ReadValue() + "");
         GUI.Label(new Rect(100, 150, 300, 100), "ThrowVal: " + throwValue);
         GUI.Label(new Rect(100, 175, 300, 100), "ThrowMag: " + throwValue.magnitude);
     }
