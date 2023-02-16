@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "ZY22DDJ4TN",
         "name": "com.DefaultCompany.WES_CrossPlatform_Sensors",
-        "processId": 15652,
+        "processId": 18316,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -13,12 +13,6 @@
             "name": "com.motorola.launcher3",
             "processId": 3717,
             "exited": false
-        },
-        {
-            "deviceId": "ZY22DDJ4TN",
-            "name": "com.DefaultCompany.WES_CrossPlatform_Sensors",
-            "processId": 5112,
-            "exited": true
         },
         {
             "deviceId": "ZY22DDJ4TN",
@@ -42,6 +36,30 @@
             "deviceId": "ZY22DDJ4TN",
             "name": "com.DefaultCompany.WES_CrossPlatform_Sensors",
             "processId": 15652,
+            "exited": true
+        },
+        {
+            "deviceId": "ZY22DDJ4TN",
+            "name": "com.DefaultCompany.WES_CrossPlatform_Sensors",
+            "processId": 6799,
+            "exited": false
+        },
+        {
+            "deviceId": "ZY22DDJ4TN",
+            "name": "com.DefaultCompany.WES_CrossPlatform_Sensors",
+            "processId": 8766,
+            "exited": false
+        },
+        {
+            "deviceId": "ZY22DDJ4TN",
+            "name": "com.DefaultCompany.WES_CrossPlatform_Sensors",
+            "processId": 17402,
+            "exited": false
+        },
+        {
+            "deviceId": "ZY22DDJ4TN",
+            "name": "com.DefaultCompany.WES_CrossPlatform_Sensors",
+            "processId": 18316,
             "exited": false
         }
     ],

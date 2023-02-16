@@ -8,34 +8,11 @@ using Gyroscope = UnityEngine.InputSystem.Gyroscope;
 public class Sensors : MonoBehaviour
 {
     [SerializeField]
-    MeshRenderer sphereRenderer, proxySensor;
-
-    bool throwStarted;
-
-    Vector3 throwValue;
-    private bool obstructed;
-
-    Vector2 touchPos;
-
-    [SerializeField]
     Transform[] touchVisualizers;
-    private Vector3 proxyPos;
 
-    private IEnumerator Start()
-    {
-        proxyPos = proxySensor.transform.position;
-        yield return new WaitForSeconds(1);
-        InputSystem.EnableDevice(GravitySensor.current);
-        InputSystem.EnableDevice(Gyroscope.current);
-        InputSystem.EnableDevice(LinearAccelerationSensor.current);
-        InputSystem.EnableDevice(ProximitySensor.current);
-
-
-        FrontCamera();
-    }
     private void Update()
     {
-        if(Input.touchCount > 0)
+        if (Input.touchCount > 0)
         {
             for (int i = 0; i < Input.touchCount; i++)
             {
@@ -51,7 +28,36 @@ public class Sensors : MonoBehaviour
                 item.position = Vector3.one * 1000;
             }
         }
+    }
 
+
+    [SerializeField]
+    MeshRenderer sphereRenderer, proxySensor;
+
+    bool throwStarted;
+
+    Vector3 throwValue;
+    private bool obstructed;
+
+    Vector2 touchPos;
+
+    private Vector3 proxyPos;
+
+    private IEnumerator Start()
+    {
+        proxyPos = proxySensor.transform.position;
+        yield return new WaitForSeconds(1);
+        InputSystem.EnableDevice(GravitySensor.current);
+        InputSystem.EnableDevice(Gyroscope.current);
+        InputSystem.EnableDevice(LinearAccelerationSensor.current);
+        InputSystem.EnableDevice(ProximitySensor.current);
+
+
+        FrontCamera();
+    }
+
+
+        void Foo(){ 
 
         if (GravitySensor.current == null || ProximitySensor.current == null || LinearAccelerationSensor.current == null)
             return;
@@ -72,6 +78,8 @@ public class Sensors : MonoBehaviour
             if(throwStarted)
             {
                 throwValue = Gyroscope.current.angularVelocity.ReadValue();
+                Debug.Log("Ang vel - " + Gyroscope.current.angularVelocity.ReadValue());
+                Debug.Log("Magniture - " + Gyroscope.current.angularVelocity.ReadValue().magnitude);
                 throwStarted = false;
             }
         }
@@ -117,5 +125,7 @@ public class Sensors : MonoBehaviour
         GUI.Label(new Rect(100, 125, 300, 100), GravitySensor.current?.gravity.ReadValue() + "");
         GUI.Label(new Rect(100, 150, 300, 100), "ThrowVal: " + throwValue);
         GUI.Label(new Rect(100, 175, 300, 100), "ThrowMag: " + throwValue.magnitude);
+
+        
     }
 }
