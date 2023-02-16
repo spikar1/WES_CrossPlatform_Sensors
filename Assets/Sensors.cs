@@ -10,6 +10,9 @@ public class Sensors : MonoBehaviour
     [SerializeField]
     Transform[] touchVisualizers;
 
+    [SerializeField]
+    Transform gravityBall;
+
     private void Update()
     {
         if (Input.touchCount > 0)
@@ -28,6 +31,10 @@ public class Sensors : MonoBehaviour
                 item.position = Vector3.one * 1000;
             }
         }
+
+        gravityBall.position = GravitySensor.current.gravity.ReadValue();
+        gravityBall.localScale = Vector3.one * (1 + (0.5f * GravitySensor.current.gravity.ReadValue().z));
+        Foo();
     }
 
 
@@ -50,7 +57,9 @@ public class Sensors : MonoBehaviour
         InputSystem.EnableDevice(GravitySensor.current);
         InputSystem.EnableDevice(Gyroscope.current);
         InputSystem.EnableDevice(LinearAccelerationSensor.current);
+        InputSystem.EnableDevice(Accelerometer.current);
         InputSystem.EnableDevice(ProximitySensor.current);
+        InputSystem.EnableDevice(LightSensor.current);
 
 
         FrontCamera();
@@ -121,10 +130,14 @@ public class Sensors : MonoBehaviour
     }
     private void OnGUI()
     {
-        GUI.Label(new Rect(100, 100, 300, 100), GravitySensor.current?.enabled + "");
-        GUI.Label(new Rect(100, 125, 300, 100), GravitySensor.current?.gravity.ReadValue() + "");
-        GUI.Label(new Rect(100, 150, 300, 100), "ThrowVal: " + throwValue);
-        GUI.Label(new Rect(100, 175, 300, 100), "ThrowMag: " + throwValue.magnitude);
+        int YPosition = 0;
+        GUI.Label(new Rect(100, (YPosition++) * 25, 300, 100), "Gravity: " + GravitySensor.current?.gravity.ReadValue() + "");
+        GUI.Label(new Rect(100, (YPosition++) * 25, 300, 100), "Linear Acceleration: " + LinearAccelerationSensor.current?.acceleration.ReadValue() + "");
+        GUI.Label(new Rect(100, (YPosition++) * 25, 300, 100), "Acceleration: " + Accelerometer.current?.acceleration.ReadValue() + "");
+        GUI.Label(new Rect(100, (YPosition++) * 25, 300, 100), "Gyroscope: " + Gyroscope.current?.angularVelocity.ReadValue() + "");
+        GUI.Label(new Rect(100, (YPosition++) * 25, 300, 100), "Light Sensor: " + LightSensor.current?.lightLevel.ReadValue() + " lux");
+        GUI.Label(new Rect(100, (YPosition++) * 25, 300, 100), "ThrowVal: " + throwValue);
+        GUI.Label(new Rect(100, (YPosition++) * 25, 300, 100), "ThrowMag: " + throwValue.magnitude);
 
         
     }
