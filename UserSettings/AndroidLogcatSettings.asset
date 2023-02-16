@@ -17,6 +17,12 @@
         {
             "deviceId": "ZY22DDJ4TN",
             "name": "com.DefaultCompany.WES_CrossPlatform_Sensors",
+            "processId": 5112,
+            "exited": true
+        },
+        {
+            "deviceId": "ZY22DDJ4TN",
+            "name": "com.DefaultCompany.WES_CrossPlatform_Sensors",
             "processId": 5754,
             "exited": true
         },
@@ -31,48 +37,6 @@
             "name": "com.DefaultCompany.WES_CrossPlatform_Sensors",
             "processId": 7539,
             "exited": true
-        },
-        {
-            "deviceId": "ZY22DDJ4TN",
-            "name": "com.DefaultCompany.WES_CrossPlatform_Sensors",
-            "processId": 8531,
-            "exited": true
-        },
-        {
-            "deviceId": "ZY22DDJ4TN",
-            "name": "com.DefaultCompany.WES_CrossPlatform_Sensors",
-            "processId": 10687,
-            "exited": false
-        },
-        {
-            "deviceId": "ZY22DDJ4TN",
-            "name": "com.DefaultCompany.WES_CrossPlatform_Sensors",
-            "processId": 12131,
-            "exited": false
-        },
-        {
-            "deviceId": "ZY22DDJ4TN",
-            "name": "com.DefaultCompany.WES_CrossPlatform_Sensors",
-            "processId": 13802,
-            "exited": false
-        },
-        {
-            "deviceId": "ZY22DDJ4TN",
-            "name": "com.DefaultCompany.WES_CrossPlatform_Sensors",
-            "processId": 14312,
-            "exited": false
-        },
-        {
-            "deviceId": "ZY22DDJ4TN",
-            "name": "com.DefaultCompany.WES_CrossPlatform_Sensors",
-            "processId": 14636,
-            "exited": false
-        },
-        {
-            "deviceId": "ZY22DDJ4TN",
-            "name": "com.DefaultCompany.WES_CrossPlatform_Sensors",
-            "processId": 15123,
-            "exited": false
         },
         {
             "deviceId": "ZY22DDJ4TN",
