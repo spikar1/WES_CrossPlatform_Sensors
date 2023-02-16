@@ -13,8 +13,32 @@ public class Sensors : MonoBehaviour
     [SerializeField]
     Transform gravityBall;
 
+    [SerializeField]
+    Transform gyroCube;
+
+    [SerializeField]
+    MeshRenderer sphereRenderer, LinearSensor;
+ 
+    private void Start()
+    {
+        InputSystem.EnableDevice(GravitySensor.current);
+        InputSystem.EnableDevice(Gyroscope.current);
+        InputSystem.EnableDevice(LinearAccelerationSensor.current);
+        InputSystem.EnableDevice(Accelerometer.current);
+        InputSystem.EnableDevice(ProximitySensor.current);
+        InputSystem.EnableDevice(LightSensor.current);
+    }
+
     private void Update()
     {
+        var proxyOffset = LinearAccelerationSensor.current.acceleration.ReadValue();
+        LinearSensor.transform.position = proxyPos + proxyOffset;
+
+
+
+
+        gyroCube.Rotate(Gyroscope.current.angularVelocity.ReadValue(), Space.World);
+
         if (Input.touchCount > 0)
         {
             for (int i = 0; i < Input.touchCount; i++)
@@ -32,14 +56,19 @@ public class Sensors : MonoBehaviour
             }
         }
 
-        gravityBall.position = GravitySensor.current.gravity.ReadValue();
-        gravityBall.localScale = Vector3.one * (1 + (0.5f * GravitySensor.current.gravity.ReadValue().z));
+        if(GravitySensor.current != null)
+        {
+            var gravity = GravitySensor.current.gravity.ReadValue();
+            gravity.z *= -1;
+            gravityBall.position = gravity;
+            gravityBall.localScale = Vector3.one * (1 + (0.5f * GravitySensor.current.gravity.ReadValue().z));
+
+        }
+
         Foo();
     }
 
 
-    [SerializeField]
-    MeshRenderer sphereRenderer, proxySensor;
 
     bool throwStarted;
 
@@ -50,20 +79,6 @@ public class Sensors : MonoBehaviour
 
     private Vector3 proxyPos;
 
-    private IEnumerator Start()
-    {
-        proxyPos = proxySensor.transform.position;
-        yield return new WaitForSeconds(1);
-        InputSystem.EnableDevice(GravitySensor.current);
-        InputSystem.EnableDevice(Gyroscope.current);
-        InputSystem.EnableDevice(LinearAccelerationSensor.current);
-        InputSystem.EnableDevice(Accelerometer.current);
-        InputSystem.EnableDevice(ProximitySensor.current);
-        InputSystem.EnableDevice(LightSensor.current);
-
-
-        FrontCamera();
-    }
 
 
         void Foo(){ 
@@ -100,10 +115,11 @@ public class Sensors : MonoBehaviour
         else
             obstructed = false;
 
-        proxySensor.material.color = obstructed ? Color.white : Color.green;
-        var proxyOffset = LinearAccelerationSensor.current.acceleration.ReadValue();
-        proxyOffset.z = 0;
-        proxySensor.transform.position = proxyPos + proxyOffset;
+        LinearSensor.material.color = obstructed ? Color.white : Color.green;
+
+
+
+
 
 
     }
@@ -125,9 +141,10 @@ public class Sensors : MonoBehaviour
 
         WebCamTexture webcamTexture = new WebCamTexture(frontCamName);
 
-        proxySensor.material.mainTexture = webcamTexture;
+        LinearSensor.material.mainTexture = webcamTexture;
         webcamTexture.Play();
     }
+
     private void OnGUI()
     {
         int YPosition = 0;
@@ -136,9 +153,6 @@ public class Sensors : MonoBehaviour
         GUI.Label(new Rect(100, (YPosition++) * 25, 300, 100), "Acceleration: " + Accelerometer.current?.acceleration.ReadValue() + "");
         GUI.Label(new Rect(100, (YPosition++) * 25, 300, 100), "Gyroscope: " + Gyroscope.current?.angularVelocity.ReadValue() + "");
         GUI.Label(new Rect(100, (YPosition++) * 25, 300, 100), "Light Sensor: " + LightSensor.current?.lightLevel.ReadValue() + " lux");
-        GUI.Label(new Rect(100, (YPosition++) * 25, 300, 100), "ThrowVal: " + throwValue);
-        GUI.Label(new Rect(100, (YPosition++) * 25, 300, 100), "ThrowMag: " + throwValue.magnitude);
-
-        
     }
+
 }
