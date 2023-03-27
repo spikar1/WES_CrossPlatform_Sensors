@@ -1,122 +1,13 @@
 {
-    "m_SelectedDeviceId": "ZY22DDJ4TN",
+    "m_SelectedDeviceId": "",
     "m_SelectedPackage": {
-        "deviceId": "ZY22DDJ4TN",
-        "name": "com.DefaultCompany.WES_CrossPlatform_Sensors",
-        "processId": 22695,
+        "deviceId": "",
+        "name": "",
+        "processId": 0,
         "exited": false
     },
     "m_SelectedPriority": 0,
-    "m_KnownPackagesForSerialization": [
-        {
-            "deviceId": "ZY22DDJ4TN",
-            "name": "com.motorola.launcher3",
-            "processId": 3717,
-            "exited": false
-        },
-        {
-            "deviceId": "ZY22DDJ4TN",
-            "name": "com.DefaultCompany.WES_CrossPlatform_Sensors",
-            "processId": 6799,
-            "exited": true
-        },
-        {
-            "deviceId": "ZY22DDJ4TN",
-            "name": "com.DefaultCompany.WES_CrossPlatform_Sensors",
-            "processId": 8766,
-            "exited": true
-        },
-        {
-            "deviceId": "ZY22DDJ4TN",
-            "name": "com.DefaultCompany.WES_CrossPlatform_Sensors",
-            "processId": 17402,
-            "exited": true
-        },
-        {
-            "deviceId": "ZY22DDJ4TN",
-            "name": "com.DefaultCompany.WES_CrossPlatform_Sensors",
-            "processId": 18316,
-            "exited": true
-        },
-        {
-            "deviceId": "ZY22DDJ4TN",
-            "name": "com.DefaultCompany.WES_CrossPlatform_Sensors",
-            "processId": 8299,
-            "exited": false
-        },
-        {
-            "deviceId": "ZY22DDJ4TN",
-            "name": "com.DefaultCompany.WES_CrossPlatform_Sensors",
-            "processId": 9549,
-            "exited": false
-        },
-        {
-            "deviceId": "ZY22DDJ4TN",
-            "name": "com.DefaultCompany.WES_CrossPlatform_Sensors",
-            "processId": 11000,
-            "exited": false
-        },
-        {
-            "deviceId": "ZY22DDJ4TN",
-            "name": "com.DefaultCompany.WES_CrossPlatform_Sensors",
-            "processId": 11404,
-            "exited": false
-        },
-        {
-            "deviceId": "ZY22DDJ4TN",
-            "name": "com.DefaultCompany.WES_CrossPlatform_Sensors",
-            "processId": 12582,
-            "exited": false
-        },
-        {
-            "deviceId": "ZY22DDJ4TN",
-            "name": "com.DefaultCompany.WES_CrossPlatform_Sensors",
-            "processId": 13002,
-            "exited": false
-        },
-        {
-            "deviceId": "ZY22DDJ4TN",
-            "name": "com.DefaultCompany.WES_CrossPlatform_Sensors",
-            "processId": 13236,
-            "exited": false
-        },
-        {
-            "deviceId": "ZY22DDJ4TN",
-            "name": "com.DefaultCompany.WES_CrossPlatform_Sensors",
-            "processId": 13652,
-            "exited": false
-        },
-        {
-            "deviceId": "ZY22DDJ4TN",
-            "name": "com.DefaultCompany.WES_CrossPlatform_Sensors",
-            "processId": 15032,
-            "exited": false
-        },
-        {
-            "deviceId": "ZY22DDJ4TN",
-            "name": "com.DefaultCompany.WES_CrossPlatform_Sensors",
-            "processId": 15503,
-            "exited": false
-        },
-        {
-            "deviceId": "ZY22DDJ4TN",
-            "name": "com.DefaultCompany.WES_CrossPlatform_Sensors",
-            "processId": 21192,
-            "exited": false
-        },
-        {
-            "deviceId": "ZY22DDJ4TN",
-            "name": "com.DefaultCompany.WES_CrossPlatform_Sensors",
-            "processId": 22387,
-            "exited": false
-        },
-        {
-            "deviceId": "ZY22DDJ4TN",
-            "name": "com.DefaultCompany.WES_CrossPlatform_Sensors",
-            "processId": 22695,
-            "exited": false
-        }
-    ],
+    "m_KnownPackagesForSerialization": [],
     "m_Tags": {
         "m_Entries": [
             {
@@ -150,20 +41,9 @@
         ]
     },
     "m_MemoryViewerState": {
-        "MemoryWindowHeight": 300.0,
-        "MemoryWindowWidth": 170.0,
-        "MemoryTypeEnabled": [
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true
-        ],
+        "MemoryWindowHeight": 0.0,
+        "MemoryWindowWidth": 0.0,
+        "MemoryTypeEnabled": [],
         "MemoryGroup": 2,
         "Behavior": 0
     },
